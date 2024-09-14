@@ -1,0 +1,16 @@
+load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
+
+cc_library(
+  name = "crypto",
+  srcs = glob(["lib/*.c"]),
+  hdrs = glob(["lib/*.h"]),
+  strip_include_prefix = "lib",
+  visibility = ["//visibility:public"],
+)
+
+cc_test(
+  name = "s1c1",
+  srcs = ["task/s1c1.c"],
+  size = "small",
+  deps = [":crypto"],
+)

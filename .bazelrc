@@ -1,0 +1,12 @@
+build --copt -Wall
+build --copt -Wextra
+build --copt -Wpedantic
+build --copt -Werror
+
+build:debug --copt    -O0
+build:debug --copt    -g
+build:debug --copt    -fsanitize=address,undefined
+build:debug --linkopt -fsanitize=address,undefined
+build:debug --compilation_mode=dbg
+
+test --test_output=errors

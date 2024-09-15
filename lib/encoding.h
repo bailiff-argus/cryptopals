@@ -6,6 +6,7 @@
 
 enum enc_error {
   ENC_OK,
+  ENC_FAIL
 };
 
 
@@ -16,6 +17,9 @@ enum enc_error ENC_HexToBytes(uint8_t *dst, const unsigned char *hex, size_t hex
 /// @brief encode bytes_len number of bytes into hex and write the result into dst.
 /// @return ENC_OK -- successful encode
 enum enc_error ENC_BytesToHex(char *dst, const uint8_t *bytes, size_t bytes_len);
+
+/// @brief Case-insensitively check if len bytes of hex_a match hex_b
+enum enc_error ENC_HexesMatch(const char *hex_a, const char *hex_b, size_t len);
 
 /// @brief decode a base64 string of length hex_len into bytes and write the result into dst.
 /// @return ENC_OK -- successful encode

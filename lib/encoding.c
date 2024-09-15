@@ -1,3 +1,4 @@
+#include <ctype.h>
 #include <stdint.h>
 #include <stddef.h>
 #include <string.h>
@@ -34,6 +35,14 @@ enum enc_error ENC_BytesToHex(char *dst, const uint8_t *bytes, size_t bytes_len)
     dst[i*2]     = hex_encode_map[ bytes[i] >> 4   ];
     dst[i*2 + 1] = hex_encode_map[ bytes[i] & 0x0f ];
   }
+
+  return ENC_OK;
+}
+
+enum enc_error ENC_HexesMatch(const char *hex_a, const char *hex_b, size_t len) {
+  for (size_t i = 0; i < len; i++)
+    if (tolower(hex_a[i]) != tolower(hex_b[i]))
+      return ENC_FAIL;
 
   return ENC_OK;
 }

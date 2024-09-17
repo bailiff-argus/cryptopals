@@ -21,3 +21,10 @@ cc_test(
   size = "small",
   deps = [":crypto"],
 )
+
+cc_test(
+  name = "s1c3",
+  srcs = ["task/s1c3.c"],
+  size = "small",
+  deps = [":crypto"],
+)

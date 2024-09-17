@@ -19,6 +19,7 @@ enum enc_error ENC_HexToBytes(uint8_t *dst, const unsigned char *hex, size_t hex
 enum enc_error ENC_BytesToHex(char *dst, const uint8_t *bytes, size_t bytes_len);
 
 /// @brief Case-insensitively check if len bytes of hex_a match hex_b
+/// @return ENC_OK -- hexes match, ENC_FAIL -- hexes are different
 enum enc_error ENC_HexesMatch(const char *hex_a, const char *hex_b, size_t len);
 
 /// @brief decode a base64 string of length hex_len into bytes and write the result into dst.

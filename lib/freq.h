@@ -10,7 +10,7 @@ enum freq_err {
 };
 
 enum freq_table_kind {
-  FREQ_TABLE_LINGUISTIC, // when processing, only consider alphabet
+  FREQ_TABLE_LINGUISTIC, // when processing, only consider alphabet and spaces
   FREQ_TABLE_BYTE,       // when processing, consider all bytes
 };
 

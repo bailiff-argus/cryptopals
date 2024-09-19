@@ -37,7 +37,7 @@ enum xor_error XOR_ProduceKeyScores(key_candidate_t keys[256], const uint8_t *xo
   for (size_t i = 0; i < 256; i++) {
     keys[i].key = (uint8_t)i;
     XOR_XORArrayWithKey(decrypted_bytes, xor_encrypted_bytes, bytes_len, &keys[i].key, 1);
-    FREQ_InitializeTable(&freq_table, FREQ_TABLE_LINGUISTIC);
+    FREQ_InitializeTable(&freq_table, FREQ_TABLE_BYTE);
     if (FREQ_UpdateTableWith(&freq_table, decrypted_bytes, bytes_len) == FREQ_OK)
       keys[i].penalty = FREQ_CalcAverageDev(&freq_table, NULL);
     else // FREQ_FAIL means that *nothing* relevant was found in decrypted_bytes

@@ -81,5 +81,6 @@ int main(void) {
     printf("\n");
   }
 
+  free(larr.lines);
   return 0;
 }

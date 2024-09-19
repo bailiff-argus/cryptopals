@@ -41,3 +41,11 @@ cc_test(
   deps = [":crypto"],
   data = [":s1c4_text"],
 )
+
+cc_test(
+  name = "s1c5",
+  srcs = ["task/s1c5.c"],
+  size = "small",
+  deps = [":crypto"],
+)
+

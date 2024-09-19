@@ -28,3 +28,16 @@ cc_test(
   size = "small",
   deps = [":crypto"],
 )
+
+filegroup(
+  name = "s1c4_text",
+  srcs = ["files/s1c4.txt"],
+)
+
+cc_test(
+  name = "s1c4",
+  srcs = ["task/s1c4.c"],
+  size = "small",
+  deps = [":crypto"],
+  data = [":s1c4_text"],
+)

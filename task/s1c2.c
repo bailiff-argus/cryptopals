@@ -3,16 +3,9 @@
 #include <string.h>
 #include <stdio.h>
 
-#include "encoding.h"
+#include "helper.h"
 #include "encoding.h"
 #include "xor.h"
-
-#define attempt_malloc(var, size_bytes) {        \
-if ((var = calloc(size_bytes + 1, 1)) == NULL) { \
-    perror("malloc fail:");                      \
-    return -1;                                   \
-  }                                              \
-}
 
 // Fixed XOR: take two equal-length buffers and produce their XOR combination
 int main(void) {
@@ -27,10 +20,10 @@ int main(void) {
 
   int ok;
 
-  attempt_malloc(bytes_a, bytes_len);
-  attempt_malloc(bytes_b, bytes_len);
-  attempt_malloc(bytes_xor, bytes_len);
-  attempt_malloc(hex_xor, hex_len);
+  EXIT_ON_NULL(bytes_a   = calloc(bytes_len + 1, 1), "malloc fail");
+  EXIT_ON_NULL(bytes_b   = calloc(bytes_len + 1, 1), "malloc fail");
+  EXIT_ON_NULL(bytes_xor = calloc(bytes_len + 1, 1), "malloc fail");
+  EXIT_ON_NULL(hex_xor   = calloc(hex_len + 1, 1),   "malloc fail");
 
   ENC_HexToBytes(bytes_a, (unsigned char *)hex_a, hex_len);
   ENC_HexToBytes(bytes_b, (unsigned char *)hex_b, hex_len);

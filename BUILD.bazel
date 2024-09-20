@@ -1,4 +1,5 @@
-load("@rules_cc//cc:defs.bzl", "cc_library", "cc_test")
+load("@rules_cc//cc:defs.bzl", "cc_library")
+load("//defs:targets.bzl", "create_targets_for_tasks_with_no_inputs", "create_targets_for_tasks_with_single_inputs")
 
 cc_library(
   name = "crypto",
@@ -8,44 +9,10 @@ cc_library(
   visibility = ["//visibility:public"],
 )
 
-cc_test(
-  name = "s1c1",
-  srcs = ["task/s1c1.c"],
-  size = "small",
-  deps = [":crypto"],
+create_targets_for_tasks_with_no_inputs(
+  target_names = ["s1c1", "s1c2", "s1c3", "s1c5"],
 )
 
-cc_test(
-  name = "s1c2",
-  srcs = ["task/s1c2.c"],
-  size = "small",
-  deps = [":crypto"],
+create_targets_for_tasks_with_single_inputs(
+  target_names = ["s1c4"],
 )
-
-cc_test(
-  name = "s1c3",
-  srcs = ["task/s1c3.c"],
-  size = "small",
-  deps = [":crypto"],
-)
-
-filegroup(
-  name = "s1c4_text",
-  srcs = ["files/s1c4.txt"],
-)
-
-cc_test(
-  name = "s1c4",
-  srcs = ["task/s1c4.c"],
-  size = "small",
-  deps = [":crypto"],
-  data = [":s1c4_text"],
-)
-
-cc_test(
-  name = "s1c5",
-  srcs = ["task/s1c5.c"],
-  size = "small",
-  deps = [":crypto"],
-)
-

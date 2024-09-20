@@ -3,13 +3,11 @@
 #include <string.h>
 #include <ctype.h>
 
-#include "freq.h"
 #include "helper.h"
 #include "encoding.h"
-#include "lib/encoding.h"
-#include "lib/xor.h"
+#include "xor.h"
 
-#define FILENAME "files/s1c4.txt"
+#define FILENAME "files/s1c4"
 
 #define LINE_LEN 60
 

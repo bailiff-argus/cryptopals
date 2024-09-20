@@ -4,6 +4,7 @@
 #include <stdlib.h>
 
 #include "encoding.h"
+#include "helper.h"
 
 // Reencode given hexstring into base64 and make sure the result is correct
 int main(void) {
@@ -14,17 +15,8 @@ int main(void) {
   size_t hex_len = strlen(hexstring), bytes_len = ENC_CalcHexDecodeBufSize(hex_len), base64_len = ENC_CalcBase64EncodeBufSize(bytes_len);
   int ok;
 
-  bytes = malloc(bytes_len);
-  if (bytes == NULL) {
-    perror("bytes allocation fail:");
-    return 1;
-  }
-
-  base64 = calloc(base64_len + 1, 1);
-  if (base64 == NULL) {
-    perror("base64 allocation fail:");
-    return 1;
-  }
+  EXIT_ON_NULL(bytes = malloc(bytes_len), "bytes allocation fail");
+  EXIT_ON_NULL(base64 = calloc(base64_len + 1, 1), "base64 allocation fail");
 
   ENC_HexToBytes(bytes, (unsigned char *)hexstring, hex_len);
   ENC_BytesToBase64(base64, bytes, bytes_len);

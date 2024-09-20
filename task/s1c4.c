@@ -33,8 +33,9 @@ int main(void) {
   FILE *fp = NULL;
   char buf[60 + 1 + 1] = {0}; // + newline + \0
   uint8_t byte_buf[30 + 1] = {0}, decr_buf[30 + 1] = {0};
-  size_t line_num = 0;
+  size_t line_num = 0, correct_line = 170;
   key_candidate_t keys[256];
+  int ok;
 
   struct line_array larr = {0, .max = 500};
 
@@ -79,6 +80,7 @@ int main(void) {
     printf("\n");
   }
 
+  ok = (larr.lines[0].num == correct_line);
   free(larr.lines);
-  return 0;
+  return ok ? 0 : 1;
 }

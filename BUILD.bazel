@@ -14,5 +14,5 @@ create_targets_for_tasks_with_no_inputs(
 )
 
 create_targets_for_tasks_with_single_inputs(
-  target_names = ["s1c4"],
+  target_names = ["s1c4", "s1c6"],
 )

@@ -1,3 +1,4 @@
+build --copt -std=c11
 build --copt -Wall
 build --copt -Wextra
 build --copt -Wpedantic

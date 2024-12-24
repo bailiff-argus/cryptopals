@@ -1,8 +1,8 @@
 load("@rules_cc//cc:defs.bzl", "cc_library")
-load("//defs:targets.bzl", "create_targets_for_tasks_with_no_inputs", "create_targets_for_tasks_with_single_inputs")
+load("//defs:targets.bzl", "create_targets_for_tasks_with_no_inputs", "create_targets_for_tasks_with_single_inputs", "create_openssl_linked_targets_with_single_inputs")
 
 cc_library(
-  name = "crypto",
+  name = "mycrypto",
   srcs = glob(["lib/*.c"]),
   hdrs = glob(["lib/*.h"]),
   strip_include_prefix = "lib",
@@ -14,5 +14,9 @@ create_targets_for_tasks_with_no_inputs(
 )
 
 create_targets_for_tasks_with_single_inputs(
-  target_names = ["s1c4", "s1c6"],
+  target_names = ["s1c4", "s1c6", "s1c8"],
+)
+
+create_openssl_linked_targets_with_single_inputs(
+  target_names = ["s1c7"],
 )

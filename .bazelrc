@@ -5,7 +5,7 @@ build --copt -Wpedantic
 build --copt -Werror
 
 build:debug --copt    -O0
-build:debug --copt    -g
+build:debug --copt    -ggdb3
 build:debug --copt    -fsanitize=address,undefined
 build:debug --linkopt -fsanitize=address,undefined
 build:debug --compilation_mode=dbg
